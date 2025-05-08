@@ -11,14 +11,14 @@ body {
 }
 
 #content {
-    max-width: 60ch;
-    width: 100%;
+    width: 60ch;
+    max-width: 70vw;
     word-break: break-word;
     background-color: #ffff93;
     height: 100%;
     padding: 1ch 2ch 1ch 2ch;
-    margin-top: 4ch;
     border: #ffff22 solid 0.75ch;
+    margin: 4ch auto 0 auto;
 }
 
 .centre {
@@ -43,10 +43,10 @@ h1, h2, h3, h4, h5 {
 }
 
 #pfp {
-    max-height: 100vmin;
     height: 12em;
-    max-width: 100vmin;
     width: 12em;
+    max-width: 60vw;
+    max-height: 60vw;
     image-rendering: crisp-edges;
 }
 
