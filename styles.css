@@ -38,6 +38,10 @@ h1, h2, h3, h4, h5 {
     font-style: italic;
 }
 
+h1 {
+    margin-bottom: 0px;
+}
+
 .indent {
     text-indent: 4ch;
 }
@@ -47,11 +51,22 @@ h1, h2, h3, h4, h5 {
     width: 12em;
     max-width: 60vw;
     max-height: 60vw;
-    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
 
 footer {
     margin-top: 6ch;
     text-align: center;
     font-style: italic;
+}
+
+#gallery img {
+    max-width: 80%;
+    width: 24em;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+#content.fullscreen {
+    width: 70vw;
 }

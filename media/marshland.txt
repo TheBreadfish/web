@@ -1,0 +1,55 @@
+MARSHLAND (assumes you start your selection with a size of 1x1x1 at y=0)
+//expand 599 n,e
+	--You can change the directions that it goes in if you prefer, I have it going to the north and east
+//expand 49 u
+//gen 95 c=(perlin(219,x,0,z,0.5,5,0.75)); d=0.5*perlin(912,x,y/4,z,2.3,5,0.8) y<c*d
+//rep "0 <95" 95
+	--Repeat until "(FAWE) 0 blocks have been replaced."
+//expand 1 n,w,s,e
+//walls barrier
+//contract 1 n,w,s,e
+//rep "0 =y<=28" water
+//rep "95 =y<=28" mud
+//rep "95 =y>28" soul_soil
+//setbiome stony_peaks
+//gmask =y<=27
+//setbiome lukewarm_ocean
+//gmask
+//rep "water >mud =perlin(38,x,y,z,0.3,5,0.5)<0.6*(2^(y-28))" tall_seagrass
+//rep "water >mud =perlin(38,x,y,z,0.3,5,0.5)<1*(2^(y-28))" tall_seagrass[half=upper]
+//rep "water >mud =perlin(38,x,y,z,0.3,5,0.5)<3*(2^(y-28))" seagrass
+//rep "0 >tall_seagrass[half=lower] =perlin(38,x,y,z,0.3,5,0.5)<0.6*(2^(y-28))" beetroots[age=1],beetroots[age=0]
+//rep "0 >mud =perlin(38,x,y,z,0.3,5,0.5)<0.2*(2^(y-28))" tall_grass[half=upper]
+//rep "0 >mud =perlin(38,x,y,z,0.3,5,0.5)<0.4*(2^(y-28))" wheat[age=5]
+//rep "0 >mud =perlin(38,x,y,z,0.3,5,0.5)<0.7*(2^(y-28))" carrots[age=5]
+//rep "beetroots =perlin(38,x,y,z,0.3,5,0.5)<0.05*(2^(y-28))" wheat[age=5]
+//rep "beetroots =perlin(38,x,y,z,0.3,5,0.5)<0.1*(2^(y-28))" potatoes[age=4]
+//rep "mud =perlin(38,x,y,z,0.3,5,0.5)<2*(2^(y-28))" *muddy_mangrove_roots
+//rep "soul_soil =perlin(38,x,y,z,0.3,5,0.5)<0.01*(2^(y-28))" coarse_dirt
+//rep "soul_soil =perlin(38,x,y,z,0.3,5,0.5)<0.03*(2^(y-28))" *stripped_spruce_wood
+//rep "0 >soul_soil =perlin(38,x,y,z,0.3,5,0.5)<2*(0.5^(y-28))" tall_grass
+//rep "0 >soul_soil =perlin(38,x,y,z,0.3,5,0.5)<4*(0.5^(y-28))" tall_grass[half=upper]
+//rep "0 >tall_grass[half=lower]" tall_grass[half=upper],0
+//rep "0 >soul_soil =perlin(38,x,y,z,0.3,5,0.5)<7*(0.5^(y-28))" short_grass
+//rep "tall_grass >tall_grass =perlin(38,x,y,z,0.3,5,0.5)<1*(0.5^(y-28))" lilac[half=upper]
+//rep <lilac 10%lilac,90%large_fern
+//rep "tall_grass[half=upper] =perlin(38,x,y,z,0.3,5,0.5)<0.03*(2^(y-28))" large_fern[half=upper]
+//rep "<large_fern tall_grass" large_fern
+//gmask =y>=31
+//setbiome plains
+//gmask
+//rep "coarse_dirt <0" grass_block
+//rep "0 >grass_block =perlin(38,x,y,z,0.3,5,0.5)<0.001*(2^(y-28))" oak_leaves
+//rep "0 >grass_block =perlin(38,x,y,z,0.3,5,0.5)<0.002*(2^(y-28))" *large_fern
+//rep "0 >grass_block,stripped_spruce_wood =perlin(38,x,y,z,0.3,5,0.5)<0.003*(2^(y-28))" short_grass
+//rep "0 >oak_leaves =perlin(38,x,y,z,0.3,5,0.5)<0.00025*(2^(y-28))" short_grass
+//rep "soul_soil <soul_soil ~[!#solid]" *dark_oak_wood
+//rep "coarse_dirt <soul_soil ~[!#solid]" *stripped_spruce_wood
+//rep beetroots[age=0] carrots[age=0]
+//rep beetroots[age=1] carrots[age=3]
+//rep "tall_grass[half=upper] =y==30 >soul_soil" 70%tall_grass[half=upper],30%wheat[age=5]
+//rep "water <0 #offset[0][-1][0][tall_seagrass] =perlin(38,x,y,z,0.3,5,0.5)<0.2*(2^(y-28))" acacia_leaves[persistent=true,waterlogged=true]
+//rep seagrass 90%seagrass,5%*small_dripleaf[half=upper,waterlogged=true],5%mangrove_propagule[waterlogged=true]
+//gmask "$plains =y<=31"
+//setbiome stony_peaks
+//gmask
