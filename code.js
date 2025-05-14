@@ -46,5 +46,5 @@ function updateTime() {
 
     currentTimeSpan.innerText = `${formatter.format(new Date())} (America/Los_Angeles)`
 
-    setTimeout(updateTime, 1000)
+    setTimeout(updateTime, 5000)
 }
