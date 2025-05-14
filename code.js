@@ -28,7 +28,7 @@ for (let i = 0; i < navBarItems.length; i++) {
 navBar.innerHTML = navBarString
 
 
-if (currentPage == "contact") {
+if (currentPage == "contact.html") {
     var currentTimeSpan = document.getElementById("current_time")
     if (currentTimeSpan == null) { throw new Error("current_time not found")}
 
