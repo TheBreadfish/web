@@ -26,3 +26,25 @@ for (let i = 0; i < navBarItems.length; i++) {
     }
 }
 navBar.innerHTML = navBarString
+
+
+if (currentPage == "contact") {
+    var currentTimeSpan = document.getElementById("current_time")
+    if (currentTimeSpan == null) { throw new Error("current_time not found")}
+
+    updateTime()
+}
+
+function updateTime() {
+    if (currentTimeSpan == null) { return }
+    let options = {
+    timeZone: "America/Los_Angeles",
+    weekday: "long",
+    hour: "numeric", minute: "numeric"
+    }
+    let formatter = new Intl.DateTimeFormat([], options)
+
+    currentTimeSpan.innerText = `${formatter.format(new Date())} (America/Los_Angeles)`
+
+    setTimeout(updateTime, 1000)
+}
