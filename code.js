@@ -44,7 +44,7 @@ function updateTime() {
     }
     let formatter = new Intl.DateTimeFormat([], options)
 
-    currentTimeSpan.innerText = `${formatter.format(new Date())} (America/Los_Angeles)`
+    currentTimeSpan.innerText = `${formatter.format(new Date())}`
 
     setTimeout(updateTime, 5000)
 }
