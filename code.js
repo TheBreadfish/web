@@ -38,7 +38,6 @@ if (currentPage == "contact.html") {
 function updateTime() {
     if (currentTimeSpan == null) { return }
     let options = {
-    timeZone: "America/Los_Angeles",
     weekday: "long",
     hour: "numeric", minute: "numeric"
     }
