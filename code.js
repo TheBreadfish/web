@@ -26,7 +26,7 @@ for (let i = 0; i < navBarItems.length; i++) {
     }
 }
 if (!navBarItems.includes(currentPage.replace(".html",""))) {
-    navBarString += ` -- <a onclick="history.back()">☜</a>`
+    navBarString += ` -- <a onclick="history.back()">[☜]</a>`
 }
 navBar.innerHTML = navBarString
 
