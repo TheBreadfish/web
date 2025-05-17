@@ -35,10 +35,10 @@ if (currentPage == "contact.html") {
     var currentTimeSpan = document.getElementById("current_time")
     if (currentTimeSpan == null) { throw new Error("current_time not found")}
 
-    updateTime()
+    updateTimeSec()
 }
 
-function updateTime() {
+function updateTimeSec() {
     if (currentTimeSpan == null) { return }
     let options = {
     weekday: "long",
@@ -46,7 +46,26 @@ function updateTime() {
     }
     let formatter = new Intl.DateTimeFormat([], options)
 
-    currentTimeSpan.innerText = `${formatter.format(new Date())}`
+    newTime = `${formatter.format(new Date())}`
 
-    setTimeout(updateTime, 5000)
+    if (currentTimeSpan.innerText != newTime) {
+        currentTimeSpan.innerText = newTime
+        setTimeout(updateTimeMin, 60000)
+    } else {
+        setTimeout(updateTimeSec, 1000)
+    }
+}
+
+function updateTimeMin() {
+    if (currentTimeSpan == null) { return }
+    let options = {
+    weekday: "long",
+    hour: "numeric", minute: "numeric"
+    }
+    let formatter = new Intl.DateTimeFormat([], options)
+
+    newTime = `${formatter.format(new Date())}`
+    currentTimeSpan.innerText = newTime
+
+    setTimeout(updateTimeMin, 60000)
 }
