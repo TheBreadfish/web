@@ -47,6 +47,9 @@ function updateTimeSec() {
     let formatter = new Intl.DateTimeFormat([], options)
 
     newTime = `${formatter.format(new Date())}`
+    if (currentTimeSpan.innerText == "") {
+        currentTimeSpan.innerText = newTime
+    }
 
     if (currentTimeSpan.innerText != newTime) {
         currentTimeSpan.innerText = newTime
