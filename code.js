@@ -8,7 +8,7 @@ const navBarItems = [
 ]
 const footer = document.getElementById("footer")
 if (footer == null) { throw new Error("footer not found D:)") }
-const footerText = `website made by thebreadfish; <a href="https://creativecommons.org/licenses/by/4.0/">cc by 4.0</a>`
+const footerText = `website made by thebreadfish; <a href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">cc by 4.0</a>`
 footer.innerHTML = footerText
 
 let navBarString = ""
@@ -24,6 +24,9 @@ for (let i = 0; i < navBarItems.length; i++) {
     if (navBarItems[i+1] != null) {
         navBarString += " - "
     }
+}
+if (!navBarItems.includes(currentPage.replace(".html",""))) {
+    navBarString += ` -- <a onclick="history.back()">☜</a>`
 }
 navBar.innerHTML = navBarString
 
