@@ -10,6 +10,10 @@ const footer = document.getElementById("footer")
 if (footer == null) { throw new Error("footer not found D:)") }
 const footerText = `website made by thebreadfish; <a href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">cc by 4.0</a>`
 footer.innerHTML = footerText
+const dateOptions = {
+    weekday: "long",
+    hour: "numeric", minute: "numeric"
+}
 
 let navBarString = ""
 for (let i = 0; i < navBarItems.length; i++) {
@@ -40,11 +44,7 @@ if (currentPage == "contact.html") {
 
 function updateTimeSec() {
     if (currentTimeSpan == null) { return }
-    let options = {
-    weekday: "long",
-    hour: "numeric", minute: "numeric"
-    }
-    let formatter = new Intl.DateTimeFormat([], options)
+    let formatter = new Intl.DateTimeFormat([], dateOptions)
 
     newTime = `${formatter.format(new Date())}`
     if (currentTimeSpan.innerText == "") {
@@ -61,11 +61,7 @@ function updateTimeSec() {
 
 function updateTimeMin() {
     if (currentTimeSpan == null) { return }
-    let options = {
-    weekday: "long",
-    hour: "numeric", minute: "numeric"
-    }
-    let formatter = new Intl.DateTimeFormat([], options)
+    let formatter = new Intl.DateTimeFormat([], dateOptions)
 
     newTime = `${formatter.format(new Date())}`
     currentTimeSpan.innerText = newTime
