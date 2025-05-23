@@ -4,11 +4,11 @@ const navBar = document.getElementById("navbar")
 const currentPage = (window.location.pathname.replace("/web/", "")==""?"index.html":window.location.pathname.replace("/web/", ""))
 if (navBar == null) { throw new Error("navigation bar not found D:") }
 const navBarItems = [
-    "index", "contact", "resources"
+    "index", "kontakt", "ressourcen"
 ]
 const footer = document.getElementById("footer")
 if (footer == null) { throw new Error("footer not found D:)") }
-const footerText = `website made by thebreadfish; <a href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">cc by 4.0</a><br> also available in <a href="de/index.html">🇩🇪</a>`
+const footerText = `website hergestellt von thebreadfish; <a href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">cc by 4.0</a><br> auch verfügbar auf <a href="../index.html">🇬🇧</a>`
 footer.innerHTML = footerText
 const dateOptions = {
     weekday: "long",
@@ -35,7 +35,7 @@ for (let i = 0; i < navBarItems.length; i++) {
 navBar.innerHTML = navBarString
 
 
-if (currentPage == "contact.html") {
+if (currentPage == "de/kontakt.html") {
     var currentTimeSpan = document.getElementById("current_time")
     if (currentTimeSpan == null) { throw new Error("current_time not found")}
 
