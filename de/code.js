@@ -1,7 +1,7 @@
 console.log("breafish code :3")
 
 const navBar = document.getElementById("navbar")
-const currentPage = (window.location.pathname.replace("de/web/", "")==""?"index.html":window.location.pathname.replace("de/web/", ""))
+const currentPage = (window.location.pathname.replace("/web/de/", "")==""?"index.html":window.location.pathname.replace("/web/de/", ""))
 if (navBar == null) { throw new Error("navigation bar not found D:") }
 const navBarItems = [
     "index", "kontakt", "ressourcen"
@@ -35,7 +35,7 @@ for (let i = 0; i < navBarItems.length; i++) {
 navBar.innerHTML = navBarString
 
 
-if (currentPage == "de/kontakt.html") {
+if (currentPage == "kontakt.html") {
     var currentTimeSpan = document.getElementById("current_time")
     if (currentTimeSpan == null) { throw new Error("current_time not found")}
 
