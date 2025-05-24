@@ -1,7 +1,7 @@
 console.log("breafish code :3")
 
 const navBar = document.getElementById("navbar")
-const currentPage = (window.location.pathname.replace("/web/", "")==""?"index.html":window.location.pathname.replace("/web/", ""))
+const currentPage = (window.location.pathname.replace("de/web/", "")==""?"index.html":window.location.pathname.replace("de/web/", ""))
 if (navBar == null) { throw new Error("navigation bar not found D:") }
 const navBarItems = [
     "index", "kontakt", "ressourcen"
