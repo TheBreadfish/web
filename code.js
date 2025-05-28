@@ -1,37 +1,51 @@
 console.log("breafish code :3")
 
 const navBar = document.getElementById("navbar")
-const currentPage = (window.location.pathname.replace("/web/", "")==""?"index.html":window.location.pathname.replace("/web/", ""))
+const langRegex = window.location.pathname.match(/^.*\/web\/(?:(de)\/|)?(.*)$/)
+const currentPage = (langRegex[2]==""?"index.html":langRegex[2])
+const langCode = (langRegex[1]==undefined?"en":langRegex[1])
 if (navBar == null) { throw new Error("navigation bar not found D:") }
-const navBarItems = [
-    "index", "contact", "resources"
-]
+
+const navBarItems = {
+    en: [
+        {name: "start", url: "index.html"},
+        {name: "contact", url: "contact.html"},
+        {name: "resources", url: "resources.html"}
+    ],
+    de: [
+        {name: "anfang", url: "index.html"},
+        {name: "kontakt", url: "kontakt.html"},
+        {name: "ressourcen", url: "ressourcen.html"}
+    ]
+}
+
+const footerText = {
+    en: `website made by thebreadfish <br> also available in <a href="de/index.html">🇩🇪</a><br><br><i>Copyright © 2025 TheBreadFish, all rights reserved.</i>`,
+    de: `website hergestellt von thebreadfish <br> auch verfügbar auf <a href="../index.html">🇬🇧</a><br><br><i>Copyright © 2025 TheBreadFish, all rights reserved.</i>`
+}
+
 const footer = document.getElementById("footer")
 if (footer == null) { throw new Error("footer not found D:)") }
-const footerText = `website made by thebreadfish; <a href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">cc by 4.0</a><br> also available in <a href="de/index.html">🇩🇪</a>`
-footer.innerHTML = footerText
+footer.innerHTML = footerText[langCode]
 const dateOptions = {
     weekday: "long",
     hour: "numeric", minute: "numeric"
 }
 
 let navBarString = ""
-for (let i = 0; i < navBarItems.length; i++) {
-    // won't work local :(
-    let pageString = navBarItems[i]
-    let pageURL = `${pageString}.html`
+for (let i = 0; i < navBarItems[langCode].length; i++) {
+    let pageString = navBarItems[langCode][i].name
+    let pageURL = navBarItems[langCode][i].url
     if (currentPage == pageURL) {
-        pageString = `[${navBarItems[i]}]`
+        pageString = `[${pageString}]`
     }
 
     navBarString += `<a href="${pageURL}">${pageString}</a>`
-    if (navBarItems[i+1] != null) {
+    if (navBarItems[langCode][i+1] != null) {
         navBarString += " - "
     }
 }
-// if (!navBarItems.includes(currentPage.replace(".html",""))) {
-//     navBarString += ` -- <a onclick="history.back()">{☜}</a>`
-// }
+
 navBar.innerHTML = navBarString
 
 
