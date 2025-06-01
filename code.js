@@ -4,18 +4,21 @@ const navBar = document.getElementById("navbar")
 const langRegex = window.location.pathname.match(/^.*\/web\/(?:(de)\/|)?(.*)$/)
 const currentPage = (langRegex[2]==""?"index.html":langRegex[2])
 const langCode = (langRegex[1]==undefined?"en":langRegex[1])
+const dividerList = document.getElementsByClassName("divider")
 if (navBar == null) { throw new Error("navigation bar not found D:") }
 
 const navBarItems = {
     en: [
-        {name: "start", url: "index.html"},
-        {name: "contact", url: "contact.html"},
-        {name: "resources", url: "resources.html"}
+        {name: "about", href: "#about"},
+        {name: "links", href: "#links"},
+        {name: "contact", href: "#contact"},
+        {name: "resources", href: "#resources"}
     ],
     de: [
-        {name: "anfang", url: "index.html"},
-        {name: "kontakt", url: "kontakt.html"},
-        {name: "ressourcen", url: "ressourcen.html"}
+        {name: "über", href: "#über"},
+        {name: "links", href: "#links"},
+        {name: "kontakt", href: "#kontakt"},
+        {name: "ressourcen", href: "#ressourcen"}
     ]
 }
 
@@ -27,58 +30,42 @@ const footerText = {
 const footer = document.getElementById("footer")
 if (footer == null) { throw new Error("footer not found D:)") }
 footer.innerHTML = footerText[langCode]
-const dateOptions = {
-    weekday: "long",
-    hour: "numeric", minute: "numeric"
+for (let i = 0; i < dividerList.length; i++) {
+    dividerList[i].addEventListener("animationend", () => {
+        dividerList[i].classList.remove("fade")
+    })
 }
 
-let navBarString = ""
-for (let i = 0; i < navBarItems[langCode].length; i++) {
-    let pageString = navBarItems[langCode][i].name
-    let pageURL = navBarItems[langCode][i].url
-    if (currentPage == pageURL) {
-        pageString = `[${pageString}]`
+if (currentPage == "index.html") {
+    for (let i = 0; i < navBarItems[langCode].length; i++) {
+        let pageString = navBarItems[langCode][i].name
+        let pageHref = navBarItems[langCode][i].href
+
+        let navBarElement = document.createElement("a")
+        navBar.appendChild(navBarElement)
+
+        navBarElement.innerText = `${pageString}`
+        navBarElement.href = pageHref
+        navBarElement.addEventListener("click", () => {
+            for (let i = 0; i < dividerList.length; i++) {
+                dividerList[i].classList.remove("fade")
+                dividerList[i].style.animation = ""
+                dividerList[i].offsetHeight
+                dividerList[i].style.animation = null
+                dividerList[i].classList.add("fade")
+            }
+            document.getElementById(pageHref.replace("#", "")).classList.remove("fade")
+        })
+
+        if (navBarItems[langCode][i+1] != null) {
+            let spanSeparator = document.createElement("span")
+            spanSeparator.innerText = ` - `
+            navBar.appendChild(spanSeparator)
+        }
     }
-
-    navBarString += `<a href="${pageURL}">${pageString}</a>`
-    if (navBarItems[langCode][i+1] != null) {
-        navBarString += " - "
-    }
-}
-
-navBar.innerHTML = navBarString
-
-
-if (currentPage == "contact.html") {
-    var currentTimeSpan = document.getElementById("current_time")
-    if (currentTimeSpan == null) { throw new Error("current_time not found")}
-
-    updateTimeSec()
-}
-
-function updateTimeSec() {
-    if (currentTimeSpan == null) { return }
-    let formatter = new Intl.DateTimeFormat([], dateOptions)
-
-    newTime = `${formatter.format(new Date())}`
-    if (currentTimeSpan.innerText == "") {
-        currentTimeSpan.innerText = newTime
-    }
-
-    if (currentTimeSpan.innerText != newTime) {
-        currentTimeSpan.innerText = newTime
-        setTimeout(updateTimeMin, 60000)
-    } else {
-        setTimeout(updateTimeSec, 1000)
-    }
-}
-
-function updateTimeMin() {
-    if (currentTimeSpan == null) { return }
-    let formatter = new Intl.DateTimeFormat([], dateOptions)
-
-    newTime = `${formatter.format(new Date())}`
-    currentTimeSpan.innerText = newTime
-
-    setTimeout(updateTimeMin, 60000)
+} else {
+    let navBarElement = document.createElement("a")
+    navBar.appendChild(navBarElement)
+    navBarElement.innerText = "☆ home ☆"
+    navBarElement.href = "index.html"
 }
