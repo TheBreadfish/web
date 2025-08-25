@@ -130,16 +130,41 @@ i {
 }
 
 #sitting_fish {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 30%);
     height: 9em;
     width: 9em;
     position: absolute;
-    left: 60%;
+    left: 80%;
     top: 60%;
 }
 
-@media screen and (max-width: 390px) {
+.social_img {
+    height: 6em;
+    width: 6em;
+    max-width: 20vw;
+    max-height: 20vw;
+}
+
+#socials {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 18em;
+    place-items: center;
+}
+
+.social_link {
+    height: 6em;
+    width: 6em;
+    max-width: 20vw;
+    max-height: 20vw;
+}
+
+@media screen and (max-width: 630px) {
   #sitting_fish_parent {
     display: none;
+  }
+  
+  #socials {
+    max-width: 100%;
   }
 }

@@ -11,13 +11,11 @@ const navBarItems = {
     en: [
         {name: "about", href: "#about"},
         {name: "links", href: "#links"},
-        {name: "contact", href: "#contact"},
         {name: "resources", href: "#resources"}
     ],
     de: [
         {name: "über", href: "#über"},
         {name: "links", href: "#links"},
-        {name: "kontakt", href: "#kontakt"},
         {name: "ressourcen", href: "#ressourcen"}
     ]
 }
