@@ -4,8 +4,6 @@ const navBar = document.getElementById("navbar")
 const langRegex = window.location.pathname.match(/^.*\/web\/(?:(de)\/|)?(.*)$/)
 const currentPage = (langRegex[2]==""?"index.html":langRegex[2])
 const langCode = (langRegex[1]==undefined?"en":langRegex[1])
-const translatedAlert = (langCode=="de"?"ich nehme eine auszeit- komm zurück!":"on hiatus- come back soon!")
-if (currentPage == "index.html") { alert(translatedAlert) }
 const dividerList = document.getElementsByClassName("divider")
 if (navBar == null) { throw new Error("navigation bar not found D:") }
 
