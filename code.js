@@ -1,10 +1,20 @@
 console.log("breafish code :3")
 
+const titleFrames = [
+    "breadnfish", "the less funny roommate", "breadnotfish", "bread", "🥖🥪🥐🍞", "halibut hotdog", "fishnotbread", "sandwitch", "breadnotfish", "bread!fish", "thebreadfish", "🐠❗🥖💥🔥", "fishsax", "gingerbread", "fishsax", "garlic bread gar", "jobread", "ananas pizza mit fisch", "breadfishlettucemayobread", "cod and sourbread 🗣️", "read", "bread⚧️", "(y=) mx b(read)", "cod croissant", "B-b-🍞 👉 👈"
+]
 const navBar = document.getElementById("navbar")
 const langRegex = window.location.pathname.match(/^.*\/web\/(?:(de)\/|)?(.*)$/)
 const currentPage = (langRegex[2]==""?"index.html":langRegex[2])
+const titlePrefix = `breadweb/${currentPage.replace(".html","")} - by `
 const langCode = (langRegex[1]==undefined?"en":langRegex[1])
 const dividerList = document.getElementsByClassName("divider")
+const animationFps = 7
+var animatedTitle = true
+var animationCurrentTime;
+var animationPrevTime;
+var animationElapsedTime;
+let animationTitleIndex = 0
 if (navBar == null) { throw new Error("navigation bar not found D:") }
 
 const navBarItems = {
@@ -21,8 +31,8 @@ const navBarItems = {
 }
 
 const footerText = {
-    en: `website made by thebreadfish <br> also available in <a href="de/index.html">🇩🇪</a><br><br><i>Copyright © 2025 TheBreadFish, all rights reserved.</i>`,
-    de: `website hergestellt von thebreadfish <br> auch verfügbar auf <a href="../index.html">🇬🇧</a><br><br><i>Copyright © 2025 TheBreadFish, all rights reserved.</i>`
+    en: `website made by thebreadfish <br> also available in <a href="de/index.html">🇩🇪</a>.<br><br><i>human-made!</i>`,
+    de: `Website hergestellt von thebreadfish <br> auch verfügbar auf <a href="../index.html">🇬🇧</a>.<br><br><i>Menschengemacht!</i>`
 }
 
 const footer = document.getElementById("footer")
@@ -67,3 +77,25 @@ if (currentPage == "index.html") {
     navBarElement.innerText = "☆ home ☆"
     navBarElement.href = "index.html"
 }
+
+function startTitleAnimation() {
+    animationPrevTime = Date.now()
+    animationCurrentTime = animationPrevTime
+    animateTitle()
+}
+function animateTitle() {
+    if (!animatedTitle) { return }
+    requestAnimationFrame(animateTitle)
+    
+    animationCurrentTime = Date.now()
+    animationElapsedTime = animationCurrentTime - animationPrevTime
+
+    if (animationElapsedTime > 1000/animationFps) {
+        animationPrevTime = animationCurrentTime - (animationElapsedTime % (1000/animationFps))
+        
+        document.title = titlePrefix+titleFrames[animationTitleIndex%titleFrames.length]
+        animationTitleIndex++
+    }
+}
+
+startTitleAnimation()
