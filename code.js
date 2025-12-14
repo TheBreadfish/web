@@ -1,7 +1,17 @@
 console.log("breafish code :3")
 
+/*
+    This file is part of breadweb.
+
+    breadweb is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+    breadweb is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License along with breadweb. If not, see <https://www.gnu.org/licenses/>. 
+*/
+
 const titleFrames = [
-    "breadnfish", "the less funny roommate", "breadnotfish", "bread", "🥖🥪🥐🍞", "halibut hotdog", "fishnotbread", "sandwitch", "breadnotfish", "bread!fish", "thebreadfish", "🐠❗🥖💥🔥", "fishsax", "gingerbread", "fishsax", "garlic bread gar", "jobread", "ananas pizza mit fisch", "breadfishlettucemayobread", "cod and sourbread 🗣️", "read", "bread⚧️", "(y=) mx b(read)", "cod croissant", "B-b-🍞 👉 👈"
+    "breadnfish", "the less funny roommate", "breadnotfish", "bread", "🥖🥪🥐🍞", "halibut hotdog", "fishnotbread", "sandwitch", "breadnotfish", "bread!fish", "thebreadfish", "🐠❗🥖💥🔥", "fishsax", "gingerbread", "garlic bread gar", "jobread", "ananas pizza mit fisch", "breadfishlettucemayobread", "cod and sourbread 🗣️", "read", "bread⚧️", "(y=) mx b(read)", "cod croissant", "B-b-🍞 👉 👈"
 ]
 const navBar = document.getElementById("navbar")
 const langRegex = window.location.pathname.match(/^.*\/web\/(?:(de)\/|)?(.*)$/)
@@ -31,8 +41,8 @@ const navBarItems = {
 }
 
 const footerText = {
-    en: `website made by thebreadfish <br> also available in <a href="de/index.html">🇩🇪</a>.<br><br><i>human-made!</i>`,
-    de: `Website hergestellt von thebreadfish <br> auch verfügbar auf <a href="../index.html">🇬🇧</a>.<br><br><i>Menschengemacht!</i>`
+    en: `website made by thebreadfish <br> also available in <a href="de/index.html">🇩🇪</a>.<br><br><i>human-made! see the <a href="https://github.com/TheBreadfish/web">source code</a>.</i>`,
+    de: `Website hergestellt von thebreadfish <br> auch verfügbar auf <a href="../index.html">🇬🇧</a>.<br><br><i>Menschengemacht! <a href="https://github.com/TheBreadfish/web">Quellcode</a> anzeigen.</i>`
 }
 
 const footer = document.getElementById("footer")
